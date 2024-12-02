@@ -1,0 +1,48 @@
+asyncapi: 3.0.0
+info:
+  title: User Signup API
+  version: 1.0.0
+  description: Получение/отправка телеметрии
+servers:
+  srv:
+    host: kafka.cluster:8092
+    description: кластер
+    protocol: kafka
+operations:
+  consume:
+    description: Выполняет сервис управления
+    action: receive
+    channel:
+      $ref: '#/channels/reader'
+  produce:
+    description: Выполняет сервис телеметрии
+    action: send
+    channel:
+      $ref: '#/channels/writer'
+channels:
+  reader:
+    messages:
+      reader:
+        $ref: '#/components/messages/messg'
+  writer:
+    messages:
+      writer:
+        $ref: '#/components/messages/messg'
+components:
+  messages:
+    messg:
+      payload:
+        type: object
+        properties:
+          isvideo:
+            type: boolean
+            example: true
+            default: true
+          video:
+            description: байты изображения с камеры в base64
+            type: string
+            example: Gsym...lzj4Tg==
+          temperature:
+            description: температура по датчику
+            type: number
+            example: 23.45

@@ -1,12 +1,12 @@
-package ru.smart.home.manage.controller;
+package ru.reports.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import ru.smart.home.manage.entity.ReportRow;
-import ru.smart.home.manage.service.ReportService;
+import ru.reports.entity.ReportRow;
+import ru.reports.service.ReportService;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package ru.smart.home.manage.entity;
+package ru.reports.entity;
 
 import java.time.LocalDateTime;
 
@@ -9,4 +9,4 @@ import java.time.LocalDateTime;
  * @param bionicId - ид протеза
  * @param description - описание события
  */
-public record ReportRow(int id, int bionicId, LocalDateTime dateTime, String description) {}
+public record ReportRow(int id, int bionicId, String dateTime, String description) {}

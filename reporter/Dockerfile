@@ -7,7 +7,7 @@ RUN ls -ltr /build/target/
 FROM eclipse-temurin:17.0.5_8-jre-alpine@sha256:02c04793fa49ad5cd193c961403223755f9209a67894622e05438598b32f210e
 WORKDIR /opt/app
 RUN addgroup --system javauser && adduser -S -s /usr/sbin/nologin -G javauser javauser
-COPY --from=builder /build/target/manager-1.0.jar app.jar
+COPY --from=builder /build/target/reports-1.0.jar app.jar
 RUN chown -R javauser:javauser .
 USER javauser
 ENTRYPOINT ["java", "-jar", "app.jar"]

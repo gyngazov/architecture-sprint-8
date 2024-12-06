@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useKeycloak } from '@react-keycloak/web';
+import {KeycloakInitOptions} from "keycloak-js";
 
 const ReportPage: React.FC = () => {
   const { keycloak, initialized } = useKeycloak();
@@ -31,7 +32,10 @@ const ReportPage: React.FC = () => {
   };
 
   if (!initialized) {
-    return <div>Loading...</div>;
+    const keycloakInitOptions: KeycloakInitOptions = {
+        pkceMethod: "S256"
+    }
+    keycloak.init(keycloakInitOptions);
   }
 
   if (!keycloak.authenticated) {
